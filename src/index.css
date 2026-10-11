@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================
+   AURA DIGITALE — Design System
+   ============================ */
+
+/* === Global Reset & Base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Sora', system-ui, sans-serif;
+  background-color: #0A0A14;
+  color: #F0EFF4;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgba(123, 97, 255, 0.3);
+  color: #F0EFF4;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7B61FF;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9D8AFF;
+}
+
+/* === Noise Overlay === */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 9999;
+  filter: url(#noiseFilter);
+  mix-blend-mode: overlay;
+}
+
+/* === Typography === */
+.font-dramatic {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-data {
+  font-family: 'Fira Code', monospace;
+}
+
+/* === Magnetic Button Effect === */
+.btn-magnetic {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.btn-magnetic:hover {
+  transform: scale(1.03) translateY(-1px);
+}
+
+.btn-magnetic:active {
+  transform: scale(0.98);
+}
+
+/* === Interactive Lift === */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* === Card Hover === */
+.card-hover {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-hover:hover {
+  transform: scale(1.01);
+  box-shadow: 0 20px 60px rgba(123, 97, 255, 0.12),
+              0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* === Glow Text Effect === */
+.text-glow {
+  text-shadow: 0 0 30px rgba(123, 97, 255, 0.4),
+               0 0 60px rgba(123, 97, 255, 0.2);
+}
+
+.text-glow-strong {
+  text-shadow: 0 0 40px rgba(123, 97, 255, 0.6),
+               0 0 80px rgba(123, 97, 255, 0.3),
+               0 0 120px rgba(123, 97, 255, 0.15);
+}
+
+/* === Gradient Backgrounds === */
+.bg-gradient-hero {
+  background: linear-gradient(
+    180deg,
+    #0A0A14 0%,
+    #12121E 40%,
+    #0A0A14 100%
+  );
+}
+
+.bg-gradient-accent {
+  background: linear-gradient(135deg, #7B61FF 0%, #9D8AFF 50%, #5A3FE6 100%);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(180deg, #0A0A14 0%, #12121E 100%);
+}
+
+.bg-gradient-section {
+  background: linear-gradient(180deg, #12121E 0%, #0A0A14 100%);
+}
+
+/* === Animated Underline === */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #7B61FF;
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* === Timeline Line === */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #7B61FF 10%,
+    #7B61FF 90%,
+    transparent 100%
+  );
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 20px;
+  }
+}
+
+/* === Timeline Dot === */
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #7B61FF;
+  border: 3px solid #0A0A14;
+  box-shadow: 0 0 20px rgba(123, 97, 255, 0.5);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .timeline-dot {
+    left: 20px;
+  }
+}
+
+/* === Circular Progress === */
+.circular-progress-bg {
+  fill: none;
+  stroke: rgba(123, 97, 255, 0.1);
+  stroke-width: 4;
+}
+
+.circular-progress-fill {
+  fill: none;
+  stroke: #7B61FF;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* === Section Spacing === */
+.section-padding {
+  padding: 120px 24px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 160px 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 180px 64px;
+  }
+}
+
+/* === Glass Effect === */
+.glass {
+  background: rgba(18, 18, 30, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(123, 97, 255, 0.1);
+}
+
+/* === Pulse animation for online indicator === */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 8px rgba(74, 222, 128, 0);
+  }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* === Container === */
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* === Hide elements initially for GSAP === */
+.gsap-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
